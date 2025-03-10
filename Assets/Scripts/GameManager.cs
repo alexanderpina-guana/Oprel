@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    //score
+    public int score = 0;
 
     private int targetDeathCount = 0;
     public int TargetDeathCount => targetDeathCount;
@@ -20,6 +24,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+      private void Start()
+    {
+        score = 0;
+    }
+
+
+
     public void RegisterDeath()
     {
         targetDeathCount++;
@@ -35,6 +46,16 @@ public class GameManager : MonoBehaviour
         {
             WinGame();
         }
+    }
+
+     public void AddScore(int addedScore)
+    {
+        score += addedScore;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
     public void WinGame()
