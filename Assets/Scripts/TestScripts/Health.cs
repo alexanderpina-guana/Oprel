@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     public float currentHealth;
     public float maxHealth;
+    //Connects to the health bar
+    public HealthBar healthBar;
 
     public Death deathComponent;
 
@@ -13,6 +16,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         deathComponent = GetComponent<Death>();
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -39,6 +43,8 @@ public class Health : MonoBehaviour
             // Die
             deathComponent.Die();
         }
+
+              healthBar.SetHealth(currentHealth);
     }
 
     public bool IsAlive()
